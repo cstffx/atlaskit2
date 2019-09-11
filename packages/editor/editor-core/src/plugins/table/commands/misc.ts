@@ -74,7 +74,7 @@ export const setTableRef = (ref?: HTMLElement | null) =>
         undefined;
       const layout = tableNode ? tableNode.attrs.layout : undefined;
       const {
-        pluginConfig: { allowControls = true, allowColumnResizing },
+        pluginConfig: { allowControls = true },
       } = getPluginState(state);
 
       let decorationSet = DecorationSet.empty;
@@ -82,11 +82,7 @@ export const setTableRef = (ref?: HTMLElement | null) =>
       if (allowControls && tableRef) {
         decorationSet = updatePluginStateDecorations(
           state,
-          createColumnControlsDecoration(
-            state.doc,
-            state.selection,
-            allowColumnResizing,
-          ),
+          createColumnControlsDecoration(state.selection),
           TableDecorations.COLUMN_CONTROLS_DECORATIONS,
         );
       }
